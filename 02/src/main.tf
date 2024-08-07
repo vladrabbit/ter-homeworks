@@ -40,11 +40,14 @@ resource "yandex_compute_instance" "platform" {
 
 }
 
+resource "yandex_vpc_network" "develop-db" {
+  name = var.vpc_name_db
+}
 
 resource "yandex_vpc_subnet" "develop-db" {
-  name           = var.vpc_name
+  name           = var.vpc_name_db
   zone           = var.zone_b
-  network_id     = yandex_vpc_network.develop.id
+  network_id     = yandex_vpc_network.develop-db.id
   v4_cidr_blocks = var.cidr_b
 }
 

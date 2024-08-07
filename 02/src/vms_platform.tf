@@ -1,4 +1,10 @@
 ###cloud vars
+variable "vpc_name_db" {
+  type        = string
+  default     = "develop-db"
+  description = "VPC network & subnet name"
+}
+
 variable "zone_b" {
   type        = string
   default     = "ru-central1-b"
