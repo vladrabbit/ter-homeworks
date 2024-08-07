@@ -21,7 +21,7 @@ variable "vm_db_family" {
 
 variable "vm_db_name" {
   type        = string
-  default     = "netology-develop-platform-web"
+  default     = "netology-develop-platform-db"
   description = "VM name"
 }
 
