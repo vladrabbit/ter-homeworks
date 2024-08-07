@@ -33,7 +33,7 @@ variable "vpc_name" {
   description = "VPC network & subnet name"
 }
 
-variable "vm_web_family" {
+variable "family" {
   type        = string
   default     = "ubuntu-2004-lts"
   description = "VM image OS type"
