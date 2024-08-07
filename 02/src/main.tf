@@ -1,13 +1,19 @@
 resource "yandex_vpc_network" "develop" {
   name = var.vpc_name
 }
-resource "yandex_vpc_subnet" "develop" {
+resource "yandex_vpc_subnet" "develop_a" {
   name           = "${var.vpc_name}-a"
   zone           = var.zone_a
   network_id     = yandex_vpc_network.develop.id
   v4_cidr_blocks = var.cidr_a
 }
 
+resource "yandex_vpc_subnet" "developd_b" {
+  name           = "${var.vpc_name}-b"
+  zone           = var.zone_b
+  network_id     = yandex_vpc_network.develop.id
+  v4_cidr_blocks = var.cidr_b
+}
 
 data "yandex_compute_image" "ubuntu" {
   family = var.family 
@@ -29,7 +35,7 @@ resource "yandex_compute_instance" "platform" {
     preemptible = true
   }
   network_interface {
-    subnet_id = yandex_vpc_subnet.develop.id
+    subnet_id = yandex_vpc_subnet.develop_a.id
     nat       = true
   }
 
@@ -42,12 +48,7 @@ resource "yandex_compute_instance" "platform" {
 
 
 
-resource "yandex_vpc_subnet" "developdb" {
-  name           = "${var.vpc_name}-b"
-  zone           = var.zone_b
-  network_id     = yandex_vpc_network.develop.id
-  v4_cidr_blocks = var.cidr_b
-}
+
 
 resource "yandex_compute_instance" "platform_db" {
   name        = var.vm_db_name 
@@ -66,7 +67,7 @@ resource "yandex_compute_instance" "platform_db" {
     preemptible = true
   }
   network_interface {
-    subnet_id = yandex_vpc_subnet.developdb.id
+    subnet_id = yandex_vpc_subnet.developd_b.id
     nat       = true
   }
 
