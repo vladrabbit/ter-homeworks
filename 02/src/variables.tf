@@ -50,6 +50,24 @@ variable "vm_web_platform" {
   default     = "standard-v1"
   description = "VM processor family"
 }
+
+variable "vm_web_cores" {
+  type        = number
+  default     = 2
+  description = "VM processor cores"
+}
+
+variable "vm_web_memory" {
+  type        = number
+  default     = 1
+  description = "VM memory"
+}
+
+variable "vm_web_fraction" {
+  type        = number
+  default     = 5
+  description = "VM processor fraction"
+}
 ###ssh vars
 
 variable "vms_ssh_root_key" {
