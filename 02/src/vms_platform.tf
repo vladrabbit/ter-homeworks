@@ -12,6 +12,7 @@ variable "cidr_b" {
   description = "https://cloud.yandex.ru/docs/vpc/operations/subnet-create"
 }
 
+/*
 
 variable "vm_db_family" {
   type        = string
@@ -49,3 +50,41 @@ variable "vm_db_fraction" {
   description = "VM processor fraction"
 }
 
+*/
+
+variable "metadata" {
+  type = map(string)
+  default = {
+    serial-port-enable = "1"
+    ssh-keys           = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPeiljpbEqYj5M0crqLuP2wdQYujzraNUOL2dWYPJq5i blade@homemint"
+  }
+}
+
+variable "vms_resources" {
+  type = map(object({
+    cores         = number
+    core_fraction = number
+    memory        = number
+    platform      = string
+    preemptible   = bool
+    zone          = string
+  }))
+  default = {
+    web = {
+      cores           = 2
+      core_fraction   = 20
+      memory          = 1
+      platform        = "standard-v3"
+      preemptible     = true
+      zone            = "ru-central1-a"
+    }
+    db = {
+      cores           = 2
+      core_fraction   = 20
+      memory          = 2
+      platform        = "standard-v3"
+      preemptible     = true
+      zone            = "ru-central1-b"
+    }
+  }
+}

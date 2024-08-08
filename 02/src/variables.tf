@@ -46,6 +46,7 @@ variable "family" {
   description = "VM image OS type"
 }
 
+/*
 variable "vm_web_name" {
   type        = string
   default     = "netology-develop-platform-web"
@@ -79,6 +80,7 @@ variable "vm_web_fraction" {
 
 variable "vms_ssh_root_key" {
   type        = string
-  default     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF3GqZVhZlkqVLV77Uqt8O6m+Xs8x8kQuFibdsSCQEHw blade@blade-VirtualBox"
+  default     = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPeiljpbEqYj5M0crqLuP2wdQYujzraNUOL2dWYPJq5i blade@homemint"
   description = "ssh-keygen -t ed25519"
 }
+*/
