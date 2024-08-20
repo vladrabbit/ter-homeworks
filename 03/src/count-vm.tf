@@ -3,8 +3,8 @@ data "yandex_compute_image" "ubuntu" {
 }
 
 resource "yandex_compute_instance" "web" {
-    for_each = toset([ "1", "2" ])
-    name = "netology-develop-platform-web-${each.key}"
+    count = 2
+    name = "web-${count.index+1}"
     platform_id = var.platform
     zone = var.default_zone
     resources {
